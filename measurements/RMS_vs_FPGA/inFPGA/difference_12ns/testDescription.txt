@@ -1,0 +1,39 @@
+Test	: Time precision test in the same FPGA with ~12ns difference.
+Date	: 03.03.2014
+Design	: trb3_periph_32PinAddOn_20131108.bit
+
+Setup	: 10KHz NIM pulse (80% duty) is generated with the Random Pulse
+	  Generator and fed to the LevCon. The LVDS output is fed to the LVDS
+	  splitter with the Differential-LEMO connectors and the 2 output
+	  signals are fed to pins 1-4 of each FPGA on the trb3 (see raw data
+	  table for more details). TDC channels 1-7 are leading and 2-8 are
+	  trailing edges with ToT ~20us.
+
+Results : The time differences between the channels ch7-ch1 are calculated for
+	  all of the four FPGAs on the trb3. The measured means are around
+	  ~12.7 The precisions of the 4 FPGAs are around ~18ps except the
+	  FPGA2, which is ~27ps. When combined with the "Difference_0ns"
+	  results, the difference between the precision of FPGA2 and the other
+	  FPGAs increase, as the measured time interval between the hit signals
+	  increases, because the jitter induced by the clock signal gets more
+	  dominant by each clock period passes.
+
+Raw Data
+========
+fpga1_0000.hld			FPGA: 1  Channel: 1-2-7-8
+fpga2_0000.hld			FPGA: 2  Channel: 1-2-7-8
+fpga3_0000.hld			FPGA: 3  Channel: 1-2-7-8
+fpga4_0000.hld			FPGA: 4  Channel: 1-2-7-8
+
+Root Files
+==========
+fpga1.root			for fpga1_0000.hld ch1-2-7-8
+fpga2.root			for fpga2_0000.hld ch1-2-7-8
+fpga3.root			for fpga3_0000.hld ch1-2-7-8
+fpga4.root			for fpga4_0000.hld ch1-2-7-8
+fpga1-2-3-4_deltaT0-1-2-12.root	the time difference plots of the four FPGAs
+				for time intervals 0ns, 0.7ns, 1.4ns and
+				12ns.
+
+References
+==========
