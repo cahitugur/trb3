@@ -1,0 +1,47 @@
+Test	: Time precision test inter-FPGA with <2ns difference.
+Date	: 04.03.2014
+Design	: trb3_periph_32PinAddOn_20131108.bit
+
+Setup	: 10KHz NIM pulse (80% duty) is generated with the Random Pulse
+	  Generator and fed to the LevCon. The LVDS output is fed to the LVDS
+	  Fan-Out board from J. Frühauf and the 4 output signals are fed to
+	  FPGA pairs on the trb3 (see raw data table for more details). TDC
+	  channels 1-7 are leading and 2-8 are trailing edges with ToT ~20us.
+
+Results : The time differences between the channels ch0-ch0, ch1-ch1 and
+	  ch7-ch1 are calculated for all of the six FPGA combinations. The
+	  reference channel cross measurement precision is below <17ps except
+	  the combinations of the FPGA2. This value for FPGA2 combinations get
+	  as worse as 53ps. The plot for each measurement is shown in
+	  fpga1-2-3-4_ch0-0_ch1-1_ch7-1.root. The effect of the bad clock
+	  signal at the FPGA2 is also observed in the inter-FPGA
+	  measurements. For details see the inFPGA measurements.
+
+Raw Data
+========
+fpga1-2_0ns_0000.hld		FPGA: 1-2  Channel: 1-2-7-8
+fpga1-3_0ns_0000.hld		FPGA: 1-3  Channel: 1-2-7-8
+fpga1-4_0ns_0000.hld		FPGA: 1-4  Channel: 1-2-7-8
+fpga2-3_0ns_0000.hld		FPGA: 2-3  Channel: 1-2-7-8
+fpga2-4_0ns_0000.hld		FPGA: 2-4  Channel: 1-2-7-8
+fpga3-4_0ns_0000.hld		FPGA: 3-4  Channel: 1-2-7-8
+fpga3-4_0ns_0001.hld		FPGA: 3-4  Channel: 1-2-7-8 taken few days
+				later, as in fpga3-4_0ns_0000.hld extra peaks
+				were seen, which are not seen in the
+				fpga3-4_0ns_0001.hld. Most probably they come
+				from the analysis. Sergey is contacted. For
+				this test fpga3-4_0ns_0001.hld is used.
+
+Root Files
+==========
+fpga1-2.root			for fpga1-2_0ns_0000.hld ch1-2-7-8
+fpga1-3.root			for fpga1-3_0ns_0000.hld ch1-2-7-8
+fpga1-4.root			for fpga1-4_0ns_0000.hld ch1-2-7-8
+fpga2-3.root			for fpga2-3_0ns_0000.hld ch1-2-7-8
+fpga2-4.root			for fpga2-4_0ns_0000.hld ch1-2-7-8
+fpga3-4.root			for fpga3-4_0ns_0001.hld ch1-2-7-8
+fpga1-2-3-4_ch0-0_ch1-1_ch7-1.root
+				shows all of the plots of the 6 combinations
+strangeSpikes.root		shows the strange spikes analysed from file
+				fpga3-4_0ns_0000.hld compared to the normal
+				measurements from fpga3-4_0ns_0001.hld
