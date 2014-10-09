@@ -1,0 +1,59 @@
+Test	: Time precision test inter-FPGA with <2ns difference.
+Date	: 09.10.2014
+Design	: trb3_periph_32PinAddOn_20140904.bit
+
+SETUP
+===== 
+Hit Rate	: 30 KHz from Jochen's card
+Trigger Rate	: 30 KHz (Not correlated with the hits)
+TDC Clock	: External 200 MHz from Closy through TRBDIST1 board
+TDCs		: On 2 different TRB3 boards FPGA1
+Power		: Enpirion DC-DC converters with 4 MHz external synchron clock
+
+
+RESULTS
+=======
+Channel Pairs	: CH n - CH n on different TDCs, only trailing edge channels
+Calibration	: Auto calibration with 500 000 hits
+Statistics	: Minimum 500 000 hits for the histograms
+Histogram calc.	: Direct time difference calculation without the reference
+	  	  time
+RMS (typical ch): Average-16,6 ps  Best-14 ps  Worst-21 ps
+RMS (best ch)	: Averate-15,3 ps  Best-13 ps  Worst-19 ps
+RMS (worst ch)	: Averate-22,8 ps  Best-18 ps  Worst-30 ps
+
+Notes		: The precision measurements between 2 TRB3 boards show bad
+		  resolution (>40 ps). This effect is narrowed down to the
+		  DC-DC converters. As these converters are switching
+		  converters sampling with 4 MHz internal clock, the ripple on
+		  different boards are not synchronised and cause bad
+		  resolution. Therefore these DC-DC converters are driven by 4
+		  MHz clock generated in the cetral FPGAs, which use external
+		  200 MHz clock from CLOSY. In this case the ripples are
+		  always synchronised and have the same differential voltage
+		  between them. The RMS is stable during the measurements but
+		  depending on the phase offset of the 4 MHz clocks (which
+		  changes after every power cycle) the precision changes
+		  between 14 ps and 43 ps (for a typical channel). In order to
+		  limit the change in the phase offset of the 4MHz clocks a
+		  common reset signal is generated and applied to the PLLs in
+		  the cetral FPGAs. Thus, assuming the lock time of the PLLs
+		  are similar and constant in every FPGA, the offset
+		  difference is kept smaller and the RMS change is limited to
+		  14 ps - 21 ps for a typical channel.
+
+Raw Data
+========
+
+Root Files
+==========
+0phase.root	Time measurements between every channel of the 2 TDCs on 2
+		TRB3s after the PLLs are reset with a common reset and the
+		ripple phase is around 0 degrees.
+180phase.root	Time measurements between every channel of the 2 TDCs on 2
+		TRB3s without the PLLs are reset with a common reset and the
+		ripple phase is around 180 degrees.
+
+Other
+=====
+measurements_rms_mean.txt	RMS and mean results from 10 measurements
