@@ -1,0 +1,34 @@
+Test	: Calibration quality test using the internal oscillator
+Date	: 03.07.2014
+Design	: trb3_periph_32PinAddOn_20140307_debug.bit
+
+Setup	: In order to collect data for calibration the internal oscillator is
+	  set at ~25KHz frequency as the hit generator and data is collected
+	  with "tdc_calibration_trigger" set at 50KHz. As tdc data the Tester
+	  Board is set as a pulse generator at ~25KHz and the system is
+	  triggered with the same pulse.
+
+Results : In order to test the calibration quality using the internal
+	  oscillator of the FPGA two sets of data are collected: 1-internal
+	  oscillator as the hit generator, 2-external pulser (Tester Board) as
+	  the hit generator. Two different calibration data are generated
+	  using the two .hld files with the similar number of hits (~500k) and
+	  the same data is analysed (external.hld) using the two calibration
+	  data. The results show that the calculated mean from both
+	  calibration files differ ~10ps at most. However the precision is
+	  around ~1ps worse, when the internal oscillator is used as the hit
+	  generator for the calibration.
+
+Raw Data
+========
+internalOscillator.hld		data with int. oscillator
+external.hld			data with Tester Board
+
+Root Files
+==========
+internalOscillator.root		calibrated with	internalOscillator.hld
+				analysed data 	external.hld
+external.root			calibrated with	external.hld
+				analysed data 	external.hld
+external_vs_intOscillator.root	the time difference plots from both
+				calibrations. left: external, right: internal
