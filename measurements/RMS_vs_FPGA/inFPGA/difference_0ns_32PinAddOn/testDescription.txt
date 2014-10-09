@@ -1,0 +1,41 @@
+Test	: Time precision test in the same FPGA for the 32PinAddOn design.
+Date	: 23.04.2014
+Design	: trb3_periph_32PinAddOn_dbl_alt_64ch_20140423.bit
+
+Setup	: 100KHz NIM pulse (80% duty) is generated with the Random Pulse
+	  Generator and fed to the LevCon. The LVDS output is fed to the LVDS
+	  Fan-Out board from J. Frühauf and the 4 output signals are fed to
+	  FPGA pairs on the trb3 (see raw data table for more details). TDC
+	  channels 26-28-30-32 are leading and 25-27-29-31 are trailing edges
+	  with ToT ~2us. The same signal from the pulser is also fed to the
+	  trigger input of the CTS. Although a CBM-TOF FEE is also connected
+	  to the system, none of the channels are on.
+
+Results : The time differences between the channels ch28-ch26, ch30-ch26 and
+	  ch32-ch26 are calculated. Only the time difference ch28-ch26 is
+	  usable as the cable to the other channels is damaged. The 
+	  precisions of the 4 FPGAs get worse as the mean deviates from ~0ns,
+	  which is known due to the noise from the DC-DC converters on the
+	  trb3 board [1]. However, the degree of the worsening on FPGA2 (~9ps)
+	  is much bigger than the all of the other three FPGAs (~4ps). This
+	  error comes from the jitter induced by the clock signal, which
+	  becomes more dominant as the time difference deviates from the
+	  multiple of the clock period, as the times measured in the channels
+	  are against the different clock edges.
+
+Raw Data
+========
+32PinAddOn.hld		FPGA: 1  Channel: 25->32
+
+Root Files
+==========
+fpga1-2.root			for fpga1-2_0ns_0000.hld ch1->8
+fpga3-4.root			for fpga3-4_0ns_0000.hld ch1->8
+fpga1-2-3-4_ch1-3-5-7.root	the time difference plots of the four FPGAs
+				are plot together.
+
+References
+==========
+
+[1] Tim Schweitzer, Performance Test of the TRB3 – Time to Digital Converter
+Readout Board, Betreutes Praxisprojekt 1, 17.01.2014
