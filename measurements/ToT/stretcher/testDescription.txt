@@ -1,0 +1,82 @@
+Test	: ToT precision test with the stretcher.
+Date	: 10.11.2015
+Design	: trb3_periph_32PinAddOn_20151106.bit
+
+Setup	: Pulser      : TDC Tester Board (TTB) with 1.666ns granularity (DDR2)
+	  PulseWidth  : 3.332ns
+	  HitRate     : 38kHz
+	  TriggerRate : 12kHz
+	  TDC	      : 16 ch with stretcher
+	  Distribution: The outputs of the TTB board are connected with
+	  twisted pair cables to the 4ConnAddOn on 0x0941. The trigger output
+	  of the TTB is connected to the TEST_TDC_2a board (JF) and then
+	  connected to the 32PinAddOn on 0x0940 and 0x0942. One of the outputs
+	  of the TEST_TDC_2a board is connected via a twisted pair cable to
+	  the LVDS input of a TRBDIST2 board.
+
+Results : The precision of the channels are measured with 500 000 statistics
+	  and same data is used for calibration. The signals from the TTB gave
+	  worse results then the the TEST_TDC_2a board. The precision is
+	  measured between 11.7ps-15.3ps on 0x0942.
+
+  TDC_0940 ch 1  mean:0.000  rms:0.000  tot_mean:35.034 tot_rms:13.868
+  TDC_0940 ch 2  mean:-0.099 rms:10.250 tot_mean:35.014 tot_rms:13.135
+  TDC_0940 ch 3  mean:-1.026 rms:16.647 tot_mean:34.850 tot_rms:14.188
+  TDC_0940 ch 4  mean:-0.537 rms:10.498 tot_mean:35.008 tot_rms:13.398
+  TDC_0940 ch 5  mean:-0.103 rms:10.390 tot_mean:34.153 tot_rms:13.242
+  TDC_0940 ch 6  mean:-0.707 rms:10.424 tot_mean:33.872 tot_rms:13.380
+  TDC_0940 ch 7  mean:0.905  rms:12.873 tot_mean:36.586 tot_rms:15.861*
+  TDC_0940 ch 8  mean:1.575  rms:10.636 tot_mean:35.513 tot_rms:13.931
+  TDC_0940 ch 9  mean:0.096  rms:10.198 tot_mean:34.601 tot_rms:13.089
+  TDC_0940 ch 10 mean:1.456  rms:10.396 tot_mean:34.173 tot_rms:13.500
+  TDC_0940 ch 11 mean:1.355  rms:12.303 tot_mean:34.037 tot_rms:15.323
+  TDC_0940 ch 12 mean:1.254  rms:10.282 tot_mean:33.134 tot_rms:12.832*
+  TDC_0940 ch 13 mean:0.145  rms:9.370  tot_mean:31.459 tot_rms:14.453
+  TDC_0940 ch 14 mean:-0.683 rms:10.568 tot_mean:30.499 tot_rms:13.251
+  TDC_0940 ch 15 mean:-0.598 rms:10.119 tot_mean:34.865 tot_rms:13.594
+  TDC_0940 ch 16 mean:-1.538 rms:11.873 tot_mean:35.088 tot_rms:13.621
+
+  TDC_0941 ch 1  mean:0.000  rms:0.000  tot_mean:35.565 tot_rms:14.613
+  TDC_0941 ch 2  mean:-0.221 rms:10.129 tot_mean:35.524 tot_rms:12.640
+  TDC_0941 ch 3  mean:-1.278 rms:12.479 tot_mean:35.271 tot_rms:13.092
+  TDC_0941 ch 4  mean:-0.450 rms:46.687 tot_mean:35.379 tot_rms:12.604
+  TDC_0941 ch 5  mean:-0.192 rms:10.116 tot_mean:34.511 tot_rms:12.130*
+  TDC_0941 ch 6  mean:-0.934 rms:13.653 tot_mean:34.088 tot_rms:12.888
+  TDC_0941 ch 7  mean:0.764  rms:12.981 tot_mean:37.040 tot_rms:13.090
+  TDC_0941 ch 8  mean:1.975  rms:61.544 tot_mean:35.907 tot_rms:19.959
+  TDC_0941 ch 9  mean:-0.448 rms:9.999  tot_mean:34.977 tot_rms:12.195
+  TDC_0941 ch 10 mean:0.791  rms:9.999  tot_mean:34.581 tot_rms:12.223
+  TDC_0941 ch 11 mean:1.811  rms:12.880 tot_mean:34.317 tot_rms:13.017
+  TDC_0941 ch 12 mean:2.322  rms:43.544 tot_mean:33.741 tot_rms:13.111
+  TDC_0941 ch 13 mean:-0.457 rms:11.963 tot_mean:31.676 tot_rms:20.239
+  TDC_0941 ch 14 mean:0.000  rms:0.000  tot_mean:0.000  tot_rms:0.000
+  TDC_0941 ch 15 mean:-1.178 rms:11.309 tot_mean:35.390 tot_rms:12.905
+  TDC_0941 ch 16 mean:-0.906 rms:21.912 tot_mean:35.321 tot_rms:26.633*
+
+  TDC_0942 ch 1  mean:0.000  rms:0.000  tot_mean:35.171 tot_rms:13.591
+  TDC_0942 ch 2  mean:-0.102 rms:10.847 tot_mean:35.136 tot_rms:12.589
+  TDC_0942 ch 3  mean:-1.181 rms:12.129 tot_mean:34.953 tot_rms:12.596
+  TDC_0942 ch 4  mean:-0.638 rms:10.520 tot_mean:35.107 tot_rms:12.386
+  TDC_0942 ch 5  mean:-0.245 rms:10.673 tot_mean:34.386 tot_rms:12.592
+  TDC_0942 ch 6  mean:-0.740 rms:10.801 tot_mean:33.994 tot_rms:12.502
+  TDC_0942 ch 7  mean:0.901  rms:11.259 tot_mean:36.730 tot_rms:15.338*
+  TDC_0942 ch 8  mean:1.538  rms:10.798 tot_mean:35.584 tot_rms:12.916
+  TDC_0942 ch 9  mean:0.088  rms:10.534 tot_mean:34.732 tot_rms:12.420
+  TDC_0942 ch 10 mean:1.432  rms:10.821 tot_mean:34.303 tot_rms:12.926
+  TDC_0942 ch 11 mean:1.219  rms:10.816 tot_mean:34.083 tot_rms:13.027
+  TDC_0942 ch 12 mean:1.229  rms:10.502 tot_mean:33.316 tot_rms:12.194
+  TDC_0942 ch 13 mean:0.123  rms:10.091 tot_mean:31.646 tot_rms:12.413
+  TDC_0942 ch 14 mean:-0.713 rms:10.536 tot_mean:30.695 tot_rms:11.729*
+  TDC_0942 ch 15 mean:-0.718 rms:11.994 tot_mean:35.232 tot_rms:13.415
+  TDC_0942 ch 16 mean:-1.589 rms:12.647 tot_mean:35.258 tot_rms:13.081
+
+
+
+
+Raw Data
+========
+dabc15314173735.hld
+
+Root Files
+==========
+Go4AutoSave.root
