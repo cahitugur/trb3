@@ -1,0 +1,138 @@
+Test	: ToT precision test with alternating channels.
+Date	: 11.11.2015
+Design	: trb3_periph_32PinAddOn_20151111.bit
+	  http://jspc29.x-matter.uni-frankfurt.de/bitfiles/trb3_periph_32PinAddOn_20151111.bit
+
+
+Setup	: Pulser      : TDC Tester Board (TTB) with 1.666ns granularity (DDR2)
+	  PulseWidth  : 3.332ns
+	  HitRate     : 38kHz
+	  TriggerRate : 12kHz
+	  TDC	      : 16 ch with stretcher
+	  Distribution: The outputs of the TTB board are connected with
+	  twisted pair cables to the 4ConnAddOn on 0x0941. The trigger output
+	  of the TTB is connected to the TEST_TDC_2a board (JF) and then
+	  connected to the 32PinAddOn on 0x0940 and 0x0942. One of the outputs
+	  of the TEST_TDC_2a board is connected via a twisted pair cable to
+	  the LVDS input of a TRBDIST2 board. 
+
+Results : The odd channels show the time precision against the channel 1. The
+	  even channels show the ToT. The precision of the channels are
+	  measured with 500 000 statistics and same data is used for
+	  calibration. In general all of the FPGAs gave similar ToT precision 
+	  between 10ps-13ps. A couple of channels have worse precision (19ps
+	  and 23ps) but as these channels have different numbers, it must be
+	  setup/cable related problems. It is not investigated further. The
+	  FPGA 0x942 gives consistent results between
+	  10.292ps-12.958ps. Compared to the ToT measurements with stretcher 
+	  the improvement in precision is minor (~2ps).
+
+  TDC_0940 ch 1  mean:0.000  rms:0.000  tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 2  mean:3.128  rms:11.618 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 3  mean:0.433  rms:16.584 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 4  mean:3.164  rms:19.148 tot_mean:0.000 tot_rms:0.000* worst tot
+  TDC_0940 ch 5  mean:0.021  rms:10.658 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 6  mean:5.130  rms:10.833 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 7  mean:1.483  rms:10.920 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 8  mean:4.032  rms:10.582 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 9  mean:0.389  rms:10.543 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 10 mean:4.923  rms:10.814 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 11 mean:2.423  rms:14.065 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 12 mean:2.896  rms:12.146 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 13 mean:3.176  rms:12.522 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 14 mean:3.429  rms:15.891 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 15 mean:2.978  rms:12.109 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 16 mean:5.361  rms:11.298 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 17 mean:1.511  rms:10.990 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 18 mean:3.954  rms:10.059 tot_mean:0.000 tot_rms:0.000* best tot
+  TDC_0940 ch 19 mean:1.472  rms:11.034 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 20 mean:5.288  rms:10.359 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 21 mean:3.911  rms:11.361 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 22 mean:4.233  rms:10.828 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 23 mean:1.819  rms:10.923 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 24 mean:5.183  rms:10.800 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 25 mean:-0.201 rms:10.973 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 26 mean:5.576  rms:10.744 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 27 mean:2.873  rms:11.292 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 28 mean:4.401  rms:13.846 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 29 mean:-0.751 rms:11.343 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 30 mean:3.537  rms:12.875 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 31 mean:-0.950 rms:10.618 tot_mean:0.000 tot_rms:0.000
+  TDC_0940 ch 32 mean:3.806  rms:10.712 tot_mean:0.000 tot_rms:0.000
+
+  TDC_0941 ch 1  mean:0.000  rms:0.000  tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 2  mean:3.217  rms:12.616 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 3  mean:0.205  rms:10.760 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 4  mean:3.231  rms:11.053 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 5  mean:-0.278 rms:11.414 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 6  mean:5.290  rms:10.623 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 7  mean:1.585  rms:45.630 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 8  mean:4.156  rms:10.138 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 9  mean:0.292  rms:10.298 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 10 mean:4.920  rms:10.467 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 11 mean:2.049  rms:13.451 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 12 mean:3.111  rms:11.025 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 13 mean:2.839  rms:15.769 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 14 mean:3.624  rms:13.567 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 15 mean:3.330  rms:54.377 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 16 mean:5.238  rms:12.839 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 17 mean:0.877  rms:10.394 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 18 mean:3.983  rms:10.414 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 19 mean:0.723  rms:10.219 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 20 mean:5.527  rms:10.411 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 21 mean:4.155  rms:12.170 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 22 mean:4.480  rms:10.993 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 23 mean:2.790  rms:44.664 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 24 mean:5.432  rms:11.922 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 25 mean:-1.019 rms:10.289 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 26 mean:5.902  rms:11.052 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 27 mean:0.000  rms:0.000  tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 28 mean:0.000  rms:0.000  tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 29 mean:-1.345 rms:10.183 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 30 mean:3.575  rms:10.116 tot_mean:0.000 tot_rms:0.000* best tot
+  TDC_0941 ch 31 mean:-0.375 rms:18.195 tot_mean:0.000 tot_rms:0.000
+  TDC_0941 ch 32 mean:3.845  rms:23.396 tot_mean:0.000 tot_rms:0.000* worst tot
+
+  TDC_0942 ch 1  mean:0.000  rms:0.000  tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 2  mean:2.994  rms:12.019 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 3  mean:0.325  rms:10.043 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 4  mean:3.120  rms:12.234 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 5  mean:-0.102 rms:11.263 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 6  mean:5.223  rms:10.562 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 7  mean:1.426  rms:12.692 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 8  mean:4.079  rms:11.281 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 9  mean:0.330  rms:11.222 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 10 mean:4.918  rms:10.870 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 11 mean:2.277  rms:11.816 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 12 mean:2.933  rms:10.428 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 13 mean:3.092  rms:11.792 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 14 mean:3.396  rms:10.483 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 15 mean:2.907  rms:15.610 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 16 mean:5.357  rms:11.790 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 17 mean:1.422  rms:11.364 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 18 mean:3.850  rms:10.292 tot_mean:0.000 tot_rms:0.000* best tot
+  TDC_0942 ch 19 mean:1.437  rms:11.338 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 20 mean:5.283  rms:10.461 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 21 mean:3.696  rms:11.423 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 22 mean:4.335  rms:10.417 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 23 mean:1.720  rms:11.390 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 24 mean:5.252  rms:10.550 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 25 mean:-0.313 rms:10.696 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 26 mean:5.761  rms:11.557 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 27 mean:2.723  rms:11.516 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 28 mean:4.592  rms:12.958 tot_mean:0.000 tot_rms:0.000* worst tot
+  TDC_0942 ch 29 mean:-0.818 rms:11.301 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 30 mean:3.470  rms:10.704 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 31 mean:-1.065 rms:12.690 tot_mean:0.000 tot_rms:0.000
+  TDC_0942 ch 32 mean:3.834  rms:11.624 tot_mean:0.000 tot_rms:0.000
+
+
+
+
+Raw Data
+========
+file15315091141.hld
+
+Root Files
+==========
+Go4AutoSave.root
